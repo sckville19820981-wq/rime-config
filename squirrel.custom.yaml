@@ -1,0 +1,57 @@
+patch:
+  style:
+    status_message_type: mix
+    # [comment] 是注释占位符，拆字的拼音提示靠它显示。
+    # macos 模板原本删掉了它（追求极简），导致拼音生成了但没地方渲染。
+    #   是 1/6 em 窄空格，让拼音跟字之间的距离小一点，不那么散
+    candidate_format: "[label]. [candidate] [comment]"
+    candidate_list_layout: linear
+    text_orientation: horizontal
+    inline_preedit: true
+    inline_candidate: false
+    translucency: true
+    mutual_exclusive: false
+    memorize_size: false
+    showPaging: false
+    alpha: 1e+0
+    corner_radius: 1.25e+1
+    hilited_corner_radius: 1e+1
+    border_height: -3e+0
+    border_width: 0e+0
+    line_spacing: 1e+1
+    spacing: 0e+0
+    base_offset: 5e+0
+    shadow_size: 2e+0
+    # 逗号分隔是字体回退链，前面的没这个字才往后找。
+    # 钉死单一字体会让生僻字变方框：拆字候选里有大量 CJK 扩展 B/C/D 区的字，
+    # 苹方覆盖不到，macOS 也没有任何内置字体覆盖，只能靠 .LastResort 显示成 ▯。
+    # Plangothic P1/P2 补扩展 A~G 区，来自 brew install --cask font-plangothic
+    font_face: "PingFangSC-Regular,PlangothicP1,PlangothicP2"
+    font_point: 1.6e+1
+    label_font_face: PingFangSC-Light
+    label_font_point: 1.2e+1
+    color_scheme: macos_light
+    color_scheme_dark: macos_dark
+
+  preset_color_schemes:
+    macos_light:
+      author: 安静 <qvshuo@foxmail.com>
+      color_space: display_p3
+      back_color: "0xB0FFFFFF"
+      hilited_candidate_back_color: "0xF99563"
+      text_color: "0xFFFFFF"
+      candidate_text_color: "0x000000"
+      hilited_candidate_text_color: "0xFFFFFF"
+      label_color: "0x80000000"
+      hilited_candidate_label_color: "0xFFFFFF"
+
+    macos_dark:
+      author: 安静 <qvshuo@foxmail.com>
+      color_space: display_p3
+      back_color: "0x26000000"
+      hilited_candidate_back_color: "0xFDDFD0"
+      text_color: "0xFFFFFF"
+      candidate_text_color: "0xE6FFFFFF"
+      hilited_candidate_text_color: "0x000000"
+      label_color: "0x80FFFFFF"
+      hilited_candidate_label_color: "0x000000"

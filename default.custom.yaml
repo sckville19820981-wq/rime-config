@@ -1,0 +1,12 @@
+# 个人自定义补丁，不会被 plum 更新覆盖
+# 修改后需要在菜单栏鼠鬚管图标点「重新部署」才生效
+
+patch:
+  # 追加快捷键（"+" 表示在原有 bindings 后面追加，不是替换）
+  "key_binder/bindings/+":
+    # 简繁切换（对齐搜狗习惯）
+    - { when: always, accept: Control+Shift+F, toggle: traditionalization }
+    # 中英标点切换
+    - { when: always, accept: Control+Shift+P, toggle: ascii_punct }
+    # Emoji 开关
+    - { when: always, accept: Control+Shift+E, toggle: emoji }
