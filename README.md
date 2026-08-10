@@ -1,73 +1,160 @@
-# Rime 配置
+# Rime 配置 / Rime Config
 
-鼠鬚管（Squirrel）+ 雾凇拼音，横排候选、毛玻璃、拆字优化。
+个人使用的 macOS 中文输入法配置：鼠鬚管（Squirrel）+ 雾凇拼音（rime-ice）。
+Personal macOS Chinese input method setup: Squirrel + rime-ice.
 
-只跟踪自定义文件，词库和编译产物靠 plum 重装。
+主要特点 / Highlights：
 
-## 跟踪了什么
+- 横排候选栏，毛玻璃背景，亮暗配色跟随系统
+  Linear candidate bar, frosted glass, follows system light/dark
+- 拆字候选按词频重排，常用字提前
+  Radical-lookup candidates re-ranked by character frequency
+- 生僻字字体回退，CJK 扩展区不再显示成方框
+  Font fallback so rare CJK Ext-B/C/D characters don't render as tofu
+- 拆字候选带拼音注音
+  Pinyin annotation on radical-lookup candidates
+- 简繁 / 中英标点 / Emoji 一键切换
+  One-key toggles for traditional-simplified, punctuation, emoji
 
-| 文件 | 作用 |
-|---|---|
-| `squirrel.custom.yaml` | 外观：配色、字体、排版 |
-| `default.custom.yaml` | 通用快捷键 |
-| `rime_ice.custom.yaml` | 方案行为：拆字前缀、学习、注音、滤镜 |
-| `lua/radical_sort_filter.lua` | 拆字候选重排（常用字提前） |
-| `lua/char_freq.lua` | 单字词频表，上面那个滤镜用 |
+只跟踪自定义文件。词库（44 MB）和编译产物（74 MB）由 plum 重装，不入库。
+Only custom files are tracked; dictionaries and build artifacts come from plum.
 
-## 换新电脑
+## 配置内容 / Contents
+
+| 文件 File | 作用 | Purpose |
+|---|---|---|
+| `squirrel.custom.yaml` | 外观：配色、字体、排版 | Appearance |
+| `default.custom.yaml` | 通用快捷键 | Global key bindings |
+| `rime_ice.custom.yaml` | 方案行为：拆字、注音、滤镜 | Schema behavior |
+| `lua/radical_sort_filter.lua` | 拆字候选重排滤镜 | Radical re-ranking filter |
+| `lua/char_freq.lua` | 8182 字词频表，供上面的滤镜使用 | Char frequency table |
+
+### 外观 / Appearance
+
+`macos_light` / `macos_dark` 双配色跟随系统，候选横排，开 `translucency` 毛玻璃。
+
+字体是一条回退链 `PingFangSC-Regular,PlangothicP1,PlangothicP2`：苹方覆盖常用区，
+Plangothic 补 CJK 扩展 A~G 区。钉死单一字体会切断 fallback，
+拆字候选里的生僻字就会显示成方框 —— macOS 本身没有任何内置字体覆盖扩展 B 区以后。
+
+The font is a fallback chain: PingFang covers the common range, Plangothic
+covers CJK Ext A–G. Pinning a single font breaks fallback and rare characters
+render as tofu — macOS ships no font covering Ext-B and beyond.
+
+### 拆字 / Radical Lookup
+
+`uu` + 各部件拼音，例如 `uuririri` → 晶（日日日）、`uukoubatong` → 囧（口八同）。
+
+雾凇原本的引导符是 `uU`，要按 Shift；改成 `uu` 两个小写字母，顺手很多。
+默认 `enable_user_dict: false` 意味着拆字永远不学习，这里改成 `true`。
+注音来源从 `rime_ice` 换成 `kMandarin` —— 前者的 `reverse.bin` 只有 58 KB，
+没建单字读音索引，所以注音一直是空的。
+
+Default prefix `uU` needs Shift; changed to lowercase `uu`. User-dict learning
+was off by default, now on. Annotation source switched to `kMandarin` because
+rime-ice's own `reverse.bin` has no single-character reading index.
+
+**候选重排** / Re-ranking：同一拆法常匹配几十个字，权重大多是 1，同权重就按
+词库行号排。`cao'hui`（草+惠）匹配 21 个字，其中 13 个是 CJK 扩展区字、
+5 个是主词库里都没有的异体字，把「荟」垫到第 20 位。
+`radical_sort_filter.lua` 分四档重排：
+
+| 档 Tier | 内容 | Content |
+|---|---|---|
+| 1 | 基本区且主词库有，按词频排 | BMP + in main dict, by frequency |
+| 2 | 基本区但主词库没有（异体字） | BMP but absent from main dict |
+| 3 | CJK 扩展 A 区 | CJK Ext-A |
+| 4 | CJK 扩展 B 区及以后 | CJK Ext-B and beyond |
+
+荟 由此从第 20 位提到第 2 位。只降权不删除，生僻字往后翻仍在 —— 拆字的用途
+之一就是打生僻字，直接过滤掉本末倒置。
+
+This moves 荟 from #20 to #2. Rare characters are demoted, never dropped —
+typing rare characters is part of what radical lookup is for.
+
+## 安装 / Installation
 
 ```bash
-# 1. 装输入法和字体
+# 1. 输入法和字体 / Input method and fonts
 brew install --cask squirrel font-plangothic
 
-# 2. 装 plum
+# 2. Rime 包管理器 / Rime package manager
 git clone https://github.com/rime/plum.git ~/plum
 
-# 3. 装雾凇拼音 + 拆字带声调注音词典
+# 3. 雾凇拼音 + 拆字带声调注音词典
+#    rime-ice + tone-marked reading dictionaries
 cd ~/plum
 bash rime-install iDvel/rime-ice
 bash rime-install mirtlecn/rime-radical-pinyin:extra
 
-# 4. 拉本仓库覆盖配置
-cd ~/Library/Rime && git init && git remote add origin <仓库地址>
+# 4. 本仓库的配置 / This repo's config
+cd ~/Library/Rime
+git init && git remote add origin https://github.com/ziangchen7/rime-config.git
 git fetch origin && git checkout -f main
 ```
 
-然后系统设置 → 键盘 → 输入方式 → 加「鼠鬚管」，
-再点菜单栏图标「重新部署」。
+然后系统设置 → 键盘 → 输入方式 → 加「鼠鬚管」，再点菜单栏图标「重新部署」。
 
-## 快捷键
+Then System Settings → Keyboard → Input Sources → add Squirrel,
+and click **Deploy** in the menu bar icon.
 
-| 键 | 作用 |
-|---|---|
-| `Ctrl+Shift+F` | 简繁切换 |
-| `Ctrl+Shift+P` | 中英标点 |
-| `Ctrl+Shift+E` | Emoji 开关 |
-| `F4` | 方案选单 |
-| `Ctrl+Delete` | 删除/降权选中的候选词 |
-| `` ` `` | 辅码筛选，如 `hui`+`` ` ``+`cao` → 荟 |
-| `uu` + 部件拼音 | 拆字，如 `uuririri` → 晶 |
+## 快捷键 / Key Bindings
 
-## 个人词库怎么带
+| 键 Key | 作用 | Purpose |
+|---|---|---|
+| `Ctrl+Shift+F` | 简繁切换 | Simplified ⇄ Traditional |
+| `Ctrl+Shift+P` | 中英标点 | CN ⇄ EN punctuation |
+| `Ctrl+Shift+E` | Emoji 开关 | Toggle emoji |
+| `F4` | 方案选单 | Schema menu |
+| `Ctrl+Delete` | 删除/降权选中的候选词 | Delete / demote candidate |
+| `` ` `` | 辅码筛选，如 `hui` `` ` `` `cao` → 荟 | Auxiliary-code filter |
+| `uu` + 部件拼音 | 拆字，如 `uuririri` → 晶 | Radical lookup |
 
-`*.userdb/` 没有跟踪 —— 它是 LevelDB，跟 `installation_id` 绑定，
-跨机器直接拷目录可能不被识别。正规做法：
+辅码和拆字的区别：知道读音、但同音字太多时用辅码；不知道读音、只能看字形时用拆字。
 
-1. 旧机器：菜单栏鼠鬚管图标 → 「同步用户资料」，
-   会导出纯文本到 `~/Library/Rime/sync/<installation_id>/`
-2. 把那个目录拷到新机器的 `~/Library/Rime/sync/` 下
-3. 新机器再点一次「同步用户资料」，会自动合并
+Auxiliary code is for when you know the reading but there are too many
+homophones; radical lookup is for when you only know the shape.
 
-文本格式跨机器通用，也能直接看内容。
+## 个人词库 / User Dictionary
 
-## 更新词库
+`*.userdb/` 没有跟踪。它是 LevelDB 且与 `installation_id` 绑定，
+跨机器直接拷目录可能不被识别。正确做法：
+
+Not tracked — it's LevelDB bound to `installation_id`, so copying the
+directory across machines may not be recognized. Instead:
+
+1. 旧机器点菜单栏鼠鬚管图标 → 「同步用户资料」，
+   导出纯文本到 `~/Library/Rime/sync/<installation_id>/`
+   Old machine: menu bar → Sync User Data
+2. 把该目录拷到新机器的 `~/Library/Rime/sync/` 下
+   Copy that directory to the new machine
+3. 新机器再点一次「同步用户资料」，自动合并
+   New machine: Sync User Data again to merge
+
+文本格式跨机器通用，也便于直接查看内容。
+The text format is portable and human-readable.
+
+## 更新 / Updating
 
 ```bash
 cd ~/plum && bash rime-install iDvel/rime-ice
 ```
 
 跑完重新部署。`*.custom.yaml` 是补丁机制，不会被覆盖。
+Then redeploy. The `*.custom.yaml` patches are never overwritten.
 
-## 改完配置记得
+词库更新后想同步词频表 / To regenerate the frequency table:
 
-菜单栏鼠鬚管图标 → **重新部署**，否则不生效。
+```bash
+cd ~/Library/Rime
+awk -F'\t' 'NF>=3 && $1 ~ /^.$/ {print $1"\t"$3}' cn_dicts/*.dict.yaml \
+  | sort -t$'\t' -k2 -rn | awk -F'\t' '!seen[$1]++' > /tmp/freq.txt
+```
+
+再按 `lua/char_freq.lua` 现有格式写成 lua 表。详见该文件顶部注释。
+See the header comment in `lua/radical_sort_filter.lua` for details.
+
+## 注意 / Note
+
+改完任何配置都要点菜单栏鼠鬚管图标 → **重新部署**，否则不生效。
+Any config change requires **Deploy** from the menu bar icon to take effect.
