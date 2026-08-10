@@ -8,11 +8,13 @@
 # 三个自定义补丁
 !*.custom.yaml
 
+# 一键安装脚本
+!install.sh
+
 # lua 目录：先放行目录本身，git 才能进去看，再放行里面的自定义脚本
 !lua/
 lua/*
 !lua/radical_sort_filter.lua
-!lua/char_freq.lua
 
 # 故意不跟踪的：
 #   build/          编译产物，重新部署会生成
@@ -22,3 +24,6 @@ lua/*
 #   sync/           同步导出目录，含 installation_id，每台机器不同
 #   installation.yaml  含本机 installation_id，不该共享
 #   custom_phrase.txt  未修改过，与 plum 原版一致
+#   lua/char_freq.lua  从词库派生，由 install.sh 生成。词库更新后就该重算，
+#                      入库还会在多台机器间产生无意义冲突
+#   _backup_*/         install.sh 首次部署时备份的原有配置
