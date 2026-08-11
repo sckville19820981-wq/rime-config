@@ -31,7 +31,7 @@ patch:
     label_font_face: PingFangSC-Light
     label_font_point: 1.2e+1
     color_scheme: macos_light
-    color_scheme_dark: macos_dark
+    color_scheme_dark: everforest_dark
 
   preset_color_schemes:
     macos_light:
@@ -55,3 +55,19 @@ patch:
       hilited_candidate_text_color: "0x000000"
       label_color: "0x80FFFFFF"
       hilited_candidate_label_color: "0x000000"
+
+    everforest_dark:
+      name: "Everforest Dark / Everforest 暗色"
+      author: sainnhe/everforest
+      color_space: srgb
+      back_color: "0xE03B352D"              # bg0 #2D353B, 88% 不透明
+      border_color: "0x4D483D"              # bg2 #3D484D
+      text_color: "0xAAC6D3"                # fg #D3C6AA
+      hilited_text_color: "0xAAC6D3"        # fg
+      candidate_text_color: "0xAAC6D3"      # fg
+      hilited_candidate_text_color: "0x2D352D"  # bg0，反色增强对比
+      hilited_candidate_back_color: "0x80C0A7"  # green #A7C080
+      label_color: "0x899285"               # grey1 #859289
+      hilited_candidate_label_color: "0x2D352D"
+      comment_text_color: "0x788A7A"        # grey0 #7A8478（拼音注释）
+      hilited_comment_text_color: "0x475042" # bg_green #425047
