@@ -25,7 +25,7 @@ patch:
     label_font_point: 16
     comment_font_face: "AaZanJinXiaoKai-2"
     comment_font_point: 16
-    color_scheme: purity_of_form
+    color_scheme: solarized_dark
 
   preset_color_schemes:
     everforest_dark:
