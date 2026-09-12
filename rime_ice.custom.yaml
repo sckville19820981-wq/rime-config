@@ -27,3 +27,46 @@ patch:
   # 挂在链尾（uniquifier 之后），先去重再排序。
   "engine/filters/+":
     - lua_filter@*radical_sort_filter
+
+  # ---- 外挂词库 ----
+  # 挂载所有未在 rime_ice.dict.yaml 中的词库文件，权重最低（最后匹配优先）
+  "import_tables/+":
+    # THUOCL 扩展词库
+    - THUOCL_IT
+    - THUOCL_animal
+    - THUOCL_caijing
+    - THUOCL_car
+    - THUOCL_chengyu
+    - THUOCL_diming
+    - THUOCL_food
+    - THUOCL_law
+    - THUOCL_lishimingren
+    - THUOCL_medical
+    - THUOCL_poem
+
+    # Clover 词库
+    - clover.base
+    - clover.phrase
+
+    # luna_pinyin 补充词库
+    - luna_pinyin.anime
+    - luna_pinyin.biaoqing
+    - luna_pinyin.chat
+    - luna_pinyin.classical
+    - luna_pinyin.cn_en
+    - luna_pinyin.computer
+    - luna_pinyin.daily
+    - luna_pinyin.diet
+    - luna_pinyin.extended
+    - luna_pinyin.game
+    - luna_pinyin.hanyu
+    - luna_pinyin.history
+    - luna_pinyin.idiom
+    - luna_pinyin.moba
+    - luna_pinyin.movie
+    - luna_pinyin.music
+    - luna_pinyin.name
+    - luna_pinyin.net
+    - luna_pinyin.poetry
+    - luna_pinyin.practical
+    - luna_pinyin.website
