@@ -20,11 +20,11 @@ patch:
     base_offset: 4e+0
     shadow_size: 3e+0
     font_face: "AaZanJinXiaoKai-2"
-    font_point: 27
+    font_point: 24
     label_font_face: "AaZanJinXiaoKai-2"
-    label_font_point: 16
+    label_font_point: 18
     comment_font_face: "AaZanJinXiaoKai-2"
-    comment_font_point: 16
+    comment_font_point: 18
     color_scheme: blue_reverie_dark
 
   preset_color_schemes:
