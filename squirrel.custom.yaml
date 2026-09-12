@@ -37,7 +37,7 @@ patch:
       text_color: 0xAAAAAA       # 拼音灰色
       hilited_text_color: 0xCCCCCC # 拼音高亮
       candidate_text_color: 0xDDDDDD  # 候选文字浅白
-      hilited_candidate_text_color: 0x3B82F6  # 选中金色
+      hilited_candidate_text_color: 0x3B82F6  # 选中蓝色
       hilited_candidate_back_color: 0x1E3A5F  # 选中背景深灰
       label_color: 0x888888      # 序号灰
       hilited_candidate_label_color: 0x3B82F6  # 选中序号金色
