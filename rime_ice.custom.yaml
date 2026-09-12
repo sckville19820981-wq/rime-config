@@ -70,6 +70,10 @@ patch:
     - luna_pinyin.poetry
     - luna_pinyin.practical
     - luna_pinyin.website
+
+  # 启用用户词频学习，让高频词自动前排
+  "translator/enable_user_dict": true
+
 __patch:
 # Rx: iDvel/rime-ice:others/recipes/grammar:schema=rime_ice {
   - patch/+:
