@@ -15,5 +15,8 @@ patch:
   # 下面列出的会出现在选单里，顺序就是显示顺序。
   schema_list:
     - schema: rime_ice          # 雾凇拼音（全拼）
-    - schema: japanese          # 日语罗马音
+    # - schema: japanese        # 日语罗马音
+    #   ↑ 注释原因：RIME 目录下没有 japanese.schema.yaml，这一行是死配置。
+    #   部署器遇到找不到的方案会直接中止整个部署（报 missing input schema: japanese），
+    #   导致新词库构建完却同步不进 build/。要恢复日语输入需要先装对应方案文件。
     - schema: double_pinyin_flypy  # 小鹤双拼（如果不用可以删掉这行）
