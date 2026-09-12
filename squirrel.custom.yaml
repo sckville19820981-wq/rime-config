@@ -25,21 +25,21 @@ patch:
     label_font_point: 16
     comment_font_face: "AaZanJinXiaoKai-2"
     comment_font_point: 16
-    color_scheme: zanjinkai_black
+    color_scheme: everforest_dark
 
   preset_color_schemes:
-    zanjinkai_black:
-      name: "攒劲小楷·暗黑"
-      author: "Custom"
+    everforest_dark:
+      name: "Everforest Dark / Everforest 暗色"
+      author: sainnhe/everforest
       color_space: srgb
-      back_color: 0x1A1A1A       # 深黑背景
-      border_color: 0x3A3A3A     # 深色边框
-      text_color: 0xAAAAAA       # 拼音灰色
-      hilited_text_color: 0xCCCCCC # 拼音高亮
-      candidate_text_color: 0xDDDDDD  # 候选文字浅白
-      hilited_candidate_text_color: 0x3B82F6  # 选中蓝色
-      hilited_candidate_back_color: 0x1E3A5F  # 选中背景深灰
-      label_color: 0x888888      # 序号灰
-      hilited_candidate_label_color: 0x3B82F6  # 选中序号金色
-      comment_text_color: 0x777777  # 注释拼音灰
-      hilited_comment_text_color: 0xAA8800  # 选中注释金褐
+      back_color: "0xE03B352D"              # bg0 #2D353B, 88% 不透明
+      border_color: "0x4D483D"              # bg2 #3D484D
+      text_color: "0xAAC6D3"                # fg #D3C6AA
+      hilited_text_color: "0xAAC6D3"        # fg
+      candidate_text_color: "0xAAC6D3"      # fg
+      hilited_candidate_text_color: "0x2D352D"  # bg0，反色增强对比
+      hilited_candidate_back_color: "0x80C0A7"  # green #A7C080
+      label_color: "0x899285"               # grey1 #859289
+      hilited_candidate_label_color: "0x2D352D"
+      comment_text_color: "0x788A7A"        # grey0 #7A8478（拼音注释）
+      hilited_comment_text_color: "0x475042" # bg_green #425047
