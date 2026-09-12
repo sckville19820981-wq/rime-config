@@ -19,8 +19,8 @@ lua/*
 # 故意不跟踪的：
 #   build/          编译产物，重新部署会生成
 #   cn_dicts/       雾凇词库，plum 管
-#   *.userdb/       个人学习词库，是 LevelDB，跨机器直接拷可能不被识别，
-#                   走鼠鬚管菜单的「同步用户资料」导出成文本更可靠
+#   *.userdb/       已改为跟踪，可直接同步高频词
+
 #   sync/           同步导出目录，含 installation_id，每台机器不同
 #   installation.yaml  含本机 installation_id，不该共享
 #   custom_phrase.txt  未修改过，与 plum 原版一致
