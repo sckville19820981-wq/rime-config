@@ -1,0 +1,19 @@
+#  鼠须管 Rime 同步配置
+#  使用 Git 同步用户数据
+
+sync_dir: ~
+api_version: 1
+# 远程仓库地址（可选，本地 git 仓库使用留空）
+remote_url: ""
+# 同步的文件列表
+files:
+  - default.custom.yaml
+  - squirrel.custom.yaml
+  - rime_ice.custom.yaml
+  - installation.yaml
+  - user.yaml
+  - custom_phrase.txt
+  - key_bindings.yaml
+  - punctuator.yaml
+# 远程仓库地址（用于 Rime 官方同步，可选）
+# remote_url: https://github.com/sckville19820981-wq/rime-config.git
