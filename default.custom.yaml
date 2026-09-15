@@ -1,22 +1,34 @@
-# 个人自定义补丁，不会被 plum 更新覆盖
-# 修改后需要在菜单栏鼠鬚管图标点「重新部署」才生效
-
 patch:
-  # 追加快捷键（"+" 表示在原有 bindings 后面追加，不是替换）
-  "key_binder/bindings/+":
-    # 简繁切换（对齐搜狗习惯）
-    - { when: always, accept: Control+Shift+F, toggle: traditionalization }
-    # 中英标点切换
-    - { when: always, accept: Control+Shift+P, toggle: ascii_punct }
-    # Emoji 开关
-    - { when: always, accept: Control+Shift+E, toggle: emoji }
-
-  # 方案选单。按 F4 在不同输入方案间切换。
-  # 下面列出的会出现在选单里，顺序就是显示顺序。
+  sync_dir: ~/Library/Mobile\ Documents/com~apple~CloudDocs/Rime/
   schema_list:
-    - schema: rime_ice          # 雾凇拼音（全拼）
-    # - schema: japanese        # 日语罗马音
-    #   ↑ 注释原因：RIME 目录下没有 japanese.schema.yaml，这一行是死配置。
-    #   部署器遇到找不到的方案会直接中止整个部署（报 missing input schema: japanese），
-    #   导致新词库构建完却同步不进 build/。要恢复日语输入需要先装对应方案文件。
-    - schema: double_pinyin_flypy  # 小鹤双拼（如果不用可以删掉这行）
+    - schema: rime_ice
+    - schema: double_pinyin_flypy
+  menu:
+    page_size: 5
+  switcher:
+    caption: 「方案选单」
+    hotkeys:
+      - Control+Shift+slash
+    save_options:
+      - ascii_punct
+      - transcription
+      - emoji_suggestion
+      - full_shape
+    fold_options: true
+    abbreviate_options: true
+    option_list_separator: ' / '
+  ascii_composer:
+    good_old_caps_lock: true
+    switch_key:
+      Caps_Lock: clear
+      Shift_L: noop
+      Shift_R: noop
+      Control_L: noop
+      Control_R: noop
+  key_binder:
+    bindings:
+      - {when: composing, accept: Shift+Tab, send: Shift+Left}
+      - {when: composing, accept: Tab, send: Shift+Right}
+      - {when: has_menu, accept: minus, send: Page_Up}
+      - {when: has_menu, accept: equal, send: Page_Down}
+      - {when: always, accept: Control+Shift+E, toggle: emoji_suggestion}

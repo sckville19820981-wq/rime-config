@@ -1,75 +1,201 @@
+# 鼠须管自定义配置
 patch:
   style:
-    status_message_type: mix
-    candidate_format: "[label]. [candidate] [comment]"
-    candidate_list_layout: linear
+    color_scheme: psionics
+    color_scheme_dark: purity_of_form_custom
+    candidate_list_layout: stack
     text_orientation: horizontal
     inline_preedit: true
-    inline_candidate: false
-    translucency: false
-    mutual_exclusive: false
-    memorize_size: false
-    showPaging: false
-    alpha: 1e+0
-    corner_radius: 1.4e+1
-    hilited_corner_radius: 1.2e+1
-    border_height: 0e+0
-    border_width: 0e+0
-    line_spacing: 8e+0
-    spacing: 4e+0
-    base_offset: 4e+0
-    shadow_size: 3e+0
-    font_face: "AaZanJinXiaoKai-2"
-    font_point: 24
-    label_font_face: "AaZanJinXiaoKai-2"
-    label_font_point: 18
-    comment_font_face: "AaZanJinXiaoKai-2"
-    comment_font_point: 18
-    color_scheme: blue_reverie_dark
+    memorize_size: true
+    show_paging: true
+    corner_radius: 6
+    hilited_corner_radius: 0
+    border_height: 0
+    border_width: 0
+    line_spacing: 7
+    spacing: 12
+    shadow_size: 0
+    font_face: "朱雀仿宋"
+    font_point: 28
+    label_font_face: "朱雀仿宋"
+    label_font_point: 21
+    comment_font_face: "朱雀仿宋"
+    comment_font_point: 19
+
+  show_notifications_when: appropriate
+  keyboard_layout: last
 
   preset_color_schemes:
-    everforest_dark:
-      name: "Everforest Dark / Everforest 暗色"
-      author: sainnhe/everforest
-      color_space: srgb
-      back_color: "0xE03B352D"              # bg0 #2D353B, 88% 不透明
-      border_color: "0x4D483D"              # bg2 #3D484D
-      text_color: "0xAAC6D3"                # fg #D3C6AA
-      hilited_text_color: "0xAAC6D3"        # fg
-      candidate_text_color: "0xAAC6D3"      # fg
-      hilited_candidate_text_color: "0x2D352D"  # bg0，反色增强对比
-      hilited_candidate_back_color: "0x80C0A7"  # green #A7C080
-      label_color: "0x899285"               # grey1 #859289
-      hilited_candidate_label_color: "0x2D352D"
-      comment_text_color: "0x788A7A"        # grey0 #7A8478（拼音注释）
-      hilited_comment_text_color: "0x475042" # bg_green #425047
+    psionics:
+      name: "幽能／Psionics"
+      author: 雨過之後、佛振
+      font_face: "朱雀仿宋"
+      text_color: 0xc2c2c2
+      back_color: 0x444444
+      candidate_text_color: 0xeeeeee
+      hilited_text_color: 0xeeeeee
+      hilited_back_color: 0x444444
+      hilited_candidate_label_color: 0xfafafa
+      hilited_candidate_text_color: 0x000000
+      hilited_candidate_back_color: 0x4CAF50
+      comment_text_color: 0x808080
+      hilited_comment_text_color: 0x444444
 
-    blue_reverie:
-      name: "Blue Reverie"
-      author: HunterJi
+    purity_of_form_custom:
+      name: "純粹的形式／Purity of Form Custom"
+      author: 雨過之後、佛振
+      font_face: "朱雀仿宋"
+      font_point: 28
+      label_font_face: "朱雀仿宋"
+      label_font_point: 21
+      comment_font_face: "朱雀仿宋"
+      comment_font_point: 19
+      translucency: false
+      corner_radius: 10
+      hilited_corner_radius: 0
+      line_spacing: 7
+      spacing: 12
+      alpha: 1
       color_space: srgb
-      back_color: '0xFFFFFF'
-      hilited_back_color: '0x252320'
-      hilited_candidate_back_color: '0xFF7A00'
-      text_color: '0xD8000000'
-      hilited_text_color: '0xDEDDDD'
-      candidate_text_color: '0x5E5E5E'
-      hilited_candidate_text_color: '0xFFFFFF'
-      label_color: '0x888785'
-      hilited_candidate_label_color: '0xFFFFFF'
-      comment_text_color: '0xDEDDDD'
+      back_color: 0x545554
+      hilited_candidate_back_color: 0x4CAF50
+      label_color: 0xBBBBBB
+      hilited_candidate_label_color: 0x4C4C4C
+      candidate_text_color: 0xEEEEEE
+      hilited_candidate_text_color: 0x000000
+      comment_text_color: 0x808080
+      hilited_comment_text_color: 0x808080
+      text_color: 0x808080
+      hilited_text_color: 0xEEEEEE
 
-    blue_reverie_dark:
-      name: "Blue Reverie Dark"
-      author: HunterJi
-      color_space: srgb
-      back_color: '0x3F000000'
-      hilited_back_color: '0x252320'
-      hilited_candidate_back_color: '0xFF7A00'
-      text_color: '0xD8000000'
-      hilited_text_color: '0xDEDDDD'
-      candidate_text_color: '0xFFFFFF'
-      hilited_candidate_text_color: '0xFFFFFF'
-      label_color: '0xEBEBEB'
-      hilited_candidate_label_color: '0xFFFFFF'
-      comment_text_color: '0xDEDDDD'
+    dark_temple:
+      name: "暗堂／Dark Temple"
+      author: 佛振
+      text_color: 0x92f6da
+      back_color: 0x222222
+      candidate_text_color: 0xd8e3e6
+      hilited_text_color: 0xffcf9a
+      hilited_back_color: 0x222222
+      hilited_candidate_text_color: 0x92f6da
+      hilited_candidate_back_color: 0x10000000
+      comment_text_color: 0x606cff
+
+    mocha_flat_light:
+      name: "磨砂扁平明／Mocha Flat Light"
+      author: shaochenshi
+      font_face: "朱雀仿宋"
+      font_point: 28
+      label_font_face: "朱雀仿宋"
+      label_font_point: 21
+      comment_font_face: "朱雀仿宋"
+      comment_font_point: 19
+      candidate_list_layout: stack
+      text_orientation: horizontal
+      inline_preedit: true
+      translucency: true
+      corner_radius: 15
+      hilited_corner_radius: 13
+      border_height: -5
+      border_width: -5
+      line_spacing: 4
+      alpha: 100
+      shadow_size: 1
+      color_space: display_p3
+      back_color: 0x1AFFFFFF
+      candidate_text_color: 0xB3000000
+      comment_text_color: 0x80333333
+      label_color: 0xBB333333
+      hilited_candidate_back_color: 0x4DFFFFFF
+      hilited_candidate_text_color: 0x000000
+      hilited_comment_text_color: 0xBF333333
+      hilited_candidate_label_color: 0x000000
+      preedit_back_color: 0x1A000000
+      text_color: 0xBF323232
+      hilited_text_color: 0xBF1A1A1A
+
+    nord_dark:
+      name: "北方深色／Nord Dark"
+      author: Oscar Wei
+      horizontal: true
+      candidate_format: "%c %@ "
+      font_point: 16
+      label_font_point: 14
+      corner_radius: 5
+      line_spacing: 12
+      back_color: 0x473A33
+      border_color: 0x473A33
+      candidate_text_color: 0xF5D887
+      comment_text_color: 0xE6B687
+      hilited_back_color: 0x473A33
+      hilited_candidate_back_color: 0x5D4C43
+      hilited_candidate_text_color: 0xC0E077
+      hilited_text_color: 0xC0E077
+      text_color: 0xF5D887
+      label_color: 0xF5D887
+      hilited_candidate_label_color: 0x473A33
+      hilited_comment_text_color: 0xC0E077
+
+    transparent:
+      name: "无痕／Transparent"
+      author: Oscar Wei
+      horizontal: true
+      back_color: 0x0050FF36
+      text_color: 0x00DB29FF
+      hilited_text_color: 0x00D13BFF
+      hilited_back_color: 0x003BAAFF
+      hilited_candidate_text_color: 0x00DB29FF
+      hilited_candidate_back_color: 0x00E7FF4D
+      hilited_candidate_label_color: 0x00FF9A17
+      hilited_comment_text_color: 0x005a5a5a
+      candidate_text_color: 0x00FF6BFF
+      comment_text_color: 0x005a5a5a
+      font_point: 28
+      label_font_point: 21
+      font_face: "朱雀仿宋"
+      label_font_face: "朱雀仿宋"
+      comment_font_face: "朱雀仿宋"
+
+    ifrblack:
+      name: "爱范儿黑／IFR Black"
+      author: Astrian Zheng
+      back_color: 0x000000
+      border_height: 6
+      border_width: 6
+      candidate_format: "%c. %@ "
+      candidate_text_color: 0x2824C8
+      comment_text_color: 0xFFFFFF
+      corner_radius: 6
+      font_point: 28
+      hilited_candidate_back_color: 0x000000
+      hilited_candidate_label_color: 0xFFFFFF
+      hilited_candidate_text_color: 0xFFFFFF
+      hilited_text_color: 0xFFFFFF
+      horizontal: true
+      label_color: 0x2824C8
+      label_font_point: 21
+      text_color: 0x2824C8
+
+    mac_dark:
+      name: "Mac深色／Mac Dark"
+      author: lamb
+      horizontal: true
+      candidate_format: "%c %@ "
+      corner_radius: 5
+      hilited_corner_radius: 5
+      line_spacing: 12
+      border_height: 4
+      border_width: 4
+      font_face: "朱雀仿宋"
+      font_point: 16
+      label_font_point: 13
+      text_color: 0x424242
+      back_color: 0x252a2e
+      border_color: 0x050505
+      hilited_back_color: 0xD75A00
+      hilited_candidate_text_color: 0xFFFFFF
+      hilited_candidate_label_color: 0xFFFFFF
+      hilited_comment_text_color: 0x999999
+      candidate_text_color: 0xe9e9ea
+      comment_text_color: 0x999999
+      label_color: 0x999999
+

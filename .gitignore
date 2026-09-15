@@ -1,29 +1,23 @@
-# 白名单式：默认忽略一切，只放行自定义文件。
-# 这样 plum 更新词库（44M 的 cn_dicts、74M 的 build）不会污染仓库。
+.DS_Store
+**/.idea/
+.vscode/
+dist/
 
-*
-!.gitignore
-!README.md
+build/
+sync/
+*.userdb/
+installation.yaml
+user.yaml
+*.custom.yaml
+!others/**/*.custom.yaml
 
-# 三个自定义补丁
-!*.custom.yaml
+custom_phrase_double.txt
+others/script/scel2txt/out/*
+others/script/scel2txt/scel/*
+cn_dicts/temp.txt
 
-# 一键安装脚本
-!install.sh
+*private*
 
-# lua 目录：先放行目录本身，git 才能进去看，再放行里面的自定义脚本
-!lua/
-lua/*
-!lua/radical_sort_filter.lua
-
-# 故意不跟踪的：
-#   build/          编译产物，重新部署会生成
-#   cn_dicts/       雾凇词库，plum 管
-#   *.userdb/       已改为跟踪，可直接同步高频词
-
-#   sync/           同步导出目录，含 installation_id，每台机器不同
-#   installation.yaml  含本机 installation_id，不该共享
-#   custom_phrase.txt  未修改过，与 plum 原版一致
-#   lua/char_freq.lua  从词库派生，由 install.sh 生成。词库更新后就该重算，
-#                      入库还会在多台机器间产生无意义冲突
-#   _backup_*/         install.sh 首次部署时备份的原有配置
+rime_console
+rime_deployer
+rime_patch
